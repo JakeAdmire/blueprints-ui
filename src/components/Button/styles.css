@@ -1,0 +1,18 @@
+/* -----|  Tree   |----- */
+.buttonWrapper {
+    width: fit-content;
+    height: fit-content;
+}
+
+    .buttonWrapper input[type="checkbox"] {
+        display: none;
+    }
+
+    .button {
+        border: none;
+    }
+
+/* -----| General |----- */
+.buttonNeumorphism {
+    box-shadow: 7px 7px 7px grey;
+}
