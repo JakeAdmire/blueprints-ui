@@ -1,18 +1,21 @@
-/* -----|  Tree   |----- */
-.buttonWrapper {
-    width: fit-content;
-    height: fit-content;
+.generalButton {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+    outline: none;
+    position: relative;
 }
 
-    .buttonWrapper input[type="checkbox"] {
-        display: none;
-    }
+.generalButton p {
+    margin: 0;
+    font-size: 0.875rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+}
 
-    .button {
-        border: none;
-    }
-
-/* -----| General |----- */
-.buttonNeumorphism {
-    box-shadow: 7px 7px 7px grey;
+.generalButton:hover {
+    cursor: pointer;
 }
