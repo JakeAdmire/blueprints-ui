@@ -1,56 +1,64 @@
-import React, { FunctionComponent, useEffect } from "react";
-import styles from './styles.css';
+import React, { Component } from "react";
+// 
+import * as helpers from '../../misc/helpers';
 
-export type Props = {
-    // set prop types here
-    url: string;
-    text: string;
-    variant: "default" | "neumorphism";
+//-------------------------| Button Varients |-------------------------//
+import { DefaultButton } from './varients/DefaultButton';
+import { NeumorphismButton } from './varients/NeumorphismButton';
+    // toggleable
+import { ToggleableDefaultButton } from "./varients/ToggleableDefaultButton";
+import { ToggleableNeumorphismButton } from './varients/ToggleableNeumorphismButton';
+
+
+export type ButtonProps = {
+    url?: string,
+    text?: string,
+    overrideStyles?: React.CSSProperties
+} & Partial<DefaultProps>;
+
+type DefaultProps = {
+    variant: "default" | "neumorphism",
     toggleable: boolean,
-};
+    backgroundColor: string
+}
 
-// This looks like the best way to write a functional component (which most components will be).
-// We can use React Hooks for any state management or lifecycle methods we need.
-export const Button: FunctionComponent<Props> = ({...Props }) => {
+type ButtonState = {
+    child: string
+}
 
-    //---| Prop Defaults |---//
-    const {
-        url,
-        text,
-        variant = "default",
-        toggleable = false
-    } = Props;
-
-    //---| Component Variables |---//
-    let className = styles.button;
-
-    //---| Lifecycle |---// // Need to run 'npm install' on /example directory
-    useEffect(() => {
-        checkVariant();
-    });
-
-    //---| Functions |---//
-    function checkVariant() {
-        if (variant == "neumorphism") className += styles.buttonNeumorphism;
+export class Button extends Component<ButtonProps, ButtonState> {
+    static defaultProps: DefaultProps = {
+        variant: "default",
+        backgroundColor: "#FFF",
+        toggleable: false
     }
 
-    return (
-        <a href={url} className={styles.buttonWrapper}>
+    UNSAFE_componentWillMount() {
+        this.determineChild();
+    }
 
-            {toggleable ? (
-                <label>
-                    <button className={className}>
-                        {text}
-                    </button>
-                    <input type="checkbox" />
-                </label>
+    determineChild() {
+        const { toggleable, variant } = this.props;
 
-            ) : (
-                <button className={className}>
-                    {text}
-                </button>
-            )}
+        this.setState({
+            child: (toggleable ? 'Toggleable' : '') + helpers.toTitleCase(variant) + 'Button'
+        })
+    }
 
-        </a>
-    );
+    render() {
+
+        switch (this.state.child) {
+            case "NeumorphismButton":
+                return <NeumorphismButton />
+            
+            case "ToggleableNeumorphismButton":
+                return <ToggleableNeumorphismButton />
+
+            case "ToggleableDefaultButton":
+                return <ToggleableDefaultButton {...this.props} />
+
+            default:
+                return <DefaultButton {...this.props} />;
+        }
+    }
 }
