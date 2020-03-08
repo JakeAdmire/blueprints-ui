@@ -10,6 +10,7 @@ type UniqueProps = {
 
 const useStyles = createUseStyles({
     toggleableDefaultButton: {
+        backgroundColor: (props: UniqueProps) => props.backgroundColor,
         boxShadow: '0 2px 5px #00000026, inset 0 0 0 #00000026',    
         transition: 'box-shadow .2s, transform .2s, backgroundColor .3s',
 
@@ -74,11 +75,14 @@ const useStyles = createUseStyles({
             }
 
         },
+    },
+    buttonText: {
+        color: (props: UniqueProps) => props.textColor
     }
 })
 
 export const ToggleableDefaultButton: FunctionComponent<UniqueProps> = (props) => {
-    const classes = useStyles();
+    const classes = useStyles(props);
 
     return (
         <div>
@@ -86,8 +90,9 @@ export const ToggleableDefaultButton: FunctionComponent<UniqueProps> = (props) =
                     type="checkbox" 
                     id="toggleableDefaultButtonCheckbox" />
             <label  className={styles.generalButton + ' ' + classes.toggleableDefaultButton}
-                    htmlFor="toggleableDefaultButtonCheckbox">
-                <p>{props.text}</p>
+                    htmlFor="toggleableDefaultButtonCheckbox"
+                    onClick={props.onClick}>
+                <p className={classes.buttonText}>{props.text}</p>
             </label>
         </div>
     )

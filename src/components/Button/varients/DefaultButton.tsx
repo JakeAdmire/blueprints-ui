@@ -10,6 +10,7 @@ type UniqueProps = {
 
 const useStyles = createUseStyles({
     defaultButton: {
+        backgroundColor: (props: UniqueProps) => props.backgroundColor,
         boxShadow: '0 2px 5px #00000026',    
         transition: 'box-shadow .2s, transform .2s',
 
@@ -43,15 +44,19 @@ const useStyles = createUseStyles({
             top: 0, bottom: 0,
             transition: 'background-color .2s'
         }
+    },
+    buttonText: {
+        color: (props: UniqueProps) => props.textColor
     }
 })
 
 export const DefaultButton: FunctionComponent<UniqueProps> = (props) => {
-    const classes = useStyles();
+    const classes = useStyles(props);
 
     return (
-        <button className={styles.generalButton + ' ' + classes.defaultButton}>
-            <p>{props.text}</p>
+        <button className={styles.generalButton + ' ' + classes.defaultButton}
+                onClick={props.onClick}>
+            <p className={classes.buttonText}>{props.text}</p>
         </button>
     )
 }
