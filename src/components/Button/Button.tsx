@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, MouseEvent } from "react";
 // 
 import * as helpers from '../../misc/helpers';
+import Color from 'color';
 
 //-------------------------| Button Varients |-------------------------//
 import { DefaultButton } from './varients/DefaultButton';
@@ -13,7 +14,9 @@ import { ToggleableNeumorphismButton } from './varients/ToggleableNeumorphismBut
 export type ButtonProps = {
     url?: string,
     text?: string,
-    overrideStyles?: React.CSSProperties
+    overrideStyles?: React.CSSProperties,
+    textColor?: string,
+    onClick?: (event: MouseEvent<HTMLButtonElement | HTMLLabelElement>) => void
 } & Partial<DefaultProps>;
 
 type DefaultProps = {
@@ -23,42 +26,90 @@ type DefaultProps = {
 }
 
 type ButtonState = {
-    child: string
+    child: string,
+    textColor: string,
+    lowlight: string,
+    highlight: string
 }
 
 export class Button extends Component<ButtonProps, ButtonState> {
+    constructor(props: ButtonProps) {
+        super(props);
+        this.state = {
+            child: 'DefaultButton',
+            textColor: this.props.textColor,
+            lowlight: null,
+            highlight: null
+        }
+    }
     static defaultProps: DefaultProps = {
         variant: "default",
-        backgroundColor: "#FFF",
+        backgroundColor: "#0299E3",
         toggleable: false
     }
 
-    UNSAFE_componentWillMount() {
-        this.determineChild();
+    componentDidMount() {
+        const newChild = this.determineChild();
+        this.buildAdditionalProps(newChild);
+        this.determineTextColor();
     }
 
-    determineChild() {
+    determineChild(): string {
         const { toggleable, variant } = this.props;
+        const child: string = (toggleable ? 'Toggleable' : '') + helpers.toTitleCase(variant) + 'Button';
+
+        this.setState({ child });
+        
+        return child;
+    }
+
+    determineTextColor(): void {
+        const textColor: string = Color(this.props.backgroundColor).isDark()
+            ? '#FFF'
+            : '#000'
+
+        if (!this.state.textColor) 
+            this.setState({ textColor });
+    }
+
+    buildAdditionalProps(newChild: string): void {
+        if (newChild.includes('Neumorphism')) this.calculateLighting();
+    }
+
+    calculateLighting(): void {
+        const backgroundColor = Color(this.props.backgroundColor);
 
         this.setState({
-            child: (toggleable ? 'Toggleable' : '') + helpers.toTitleCase(variant) + 'Button'
+            lowlight: backgroundColor.darken(.4).alpha(.15).string(),
+            highlight: backgroundColor.lighten(.4).alpha(.15).string()
         })
     }
 
+    gatherProps(): any {
+        const initialProps = this.props;
+        const { child, textColor, lowlight, highlight } = this.state;
+
+        if (child.includes("Neumorphism"))
+            return {...initialProps, textColor, lowlight, highlight};
+
+        else return {...initialProps, textColor};
+    }
+
     render() {
+        const buttonProps = this.gatherProps();
 
         switch (this.state.child) {
             case "NeumorphismButton":
-                return <NeumorphismButton />
+                return <NeumorphismButton {...buttonProps} />
             
             case "ToggleableNeumorphismButton":
-                return <ToggleableNeumorphismButton />
+                return <ToggleableNeumorphismButton {...buttonProps} />
 
             case "ToggleableDefaultButton":
-                return <ToggleableDefaultButton {...this.props} />
+                return <ToggleableDefaultButton {...buttonProps} />
 
             default:
-                return <DefaultButton {...this.props} />;
+                return <DefaultButton {...buttonProps} />;
         }
     }
 }
