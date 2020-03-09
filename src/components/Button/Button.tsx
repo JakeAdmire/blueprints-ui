@@ -51,7 +51,6 @@ export class Button extends Component<ButtonProps, ButtonState> {
     componentDidMount() {
         const newChild = this.determineChild();
         this.buildAdditionalProps(newChild);
-        this.determineTextColor();
     }
 
     determineChild(): string {
@@ -63,13 +62,10 @@ export class Button extends Component<ButtonProps, ButtonState> {
         return child;
     }
 
-    determineTextColor(): void {
-        const textColor: string = Color(this.props.backgroundColor).isDark()
+    determineTextColor(backgroundColor: string): string {
+        return Color(backgroundColor).isDark()
             ? '#FFF'
-            : '#000'
-
-        if (!this.state.textColor) 
-            this.setState({ textColor });
+            : '#000';
     }
 
     buildAdditionalProps(newChild: string): void {
@@ -88,11 +84,12 @@ export class Button extends Component<ButtonProps, ButtonState> {
     gatherProps(): any {
         const initialProps = this.props;
         const { child, textColor, lowlight, highlight } = this.state;
+        const determineTextColor = this.determineTextColor;
 
         if (child.includes("Neumorphism"))
             return {...initialProps, textColor, lowlight, highlight};
 
-        else return {...initialProps, textColor};
+        else return {...initialProps, textColor, determineTextColor};
     }
 
     render() {
