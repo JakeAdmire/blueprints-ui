@@ -31,9 +31,9 @@ const useStyles = createUseStyles({
         }
     },
     buttonText: {
-        color: (props: UniqueProps) => Color(props.backgroundColor).isDark() 
+        color: (props: UniqueProps) => props.textColor || (Color(props.backgroundColor).isDark() 
             ? Color(props.backgroundColor).lighten(.3).string()
-            : Color(props.backgroundColor).darken(.3).string(),
+            : Color(props.backgroundColor).darken(.3).string()),
         textShadow: (props: UniqueProps) => `
             0.5px 0.5px ${Color(props.backgroundColor).lighten(.2).string()}, 
             -0.5px -0.5px ${Color(props.backgroundColor).darken(.2).string()}
