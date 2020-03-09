@@ -5,7 +5,8 @@ import { ButtonProps } from '../Button';
 import styles from '../styles.css';
 
 type UniqueProps = {
-    className?: any
+    className?: any,
+    determineTextColor: Function
 } & Partial<ButtonProps>
 
 const useStyles = createUseStyles({
@@ -77,7 +78,7 @@ const useStyles = createUseStyles({
         },
     },
     buttonText: {
-        color: (props: UniqueProps) => props.textColor
+        color: (props: UniqueProps) => props.textColor || props.determineTextColor(props.backgroundColor)
     }
 })
 
