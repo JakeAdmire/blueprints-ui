@@ -3,18 +3,19 @@
 
 <br />
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/44077214/74892540-2793c300-5347-11ea-9a87-349f22e89b4e.png" alt="Logo" width="80" height="80">
-  <h1 align="center">BluePrints-UI</h1>
+  <img src="src/img/logo.svg" alt="Logo" width="80" height="80">
+  <h1 align="center">blueprints-ui</h1>
   <p align="center">
-    A ReactJS component library & UI design system!
+    A cleaner, better design system for <a href="https://reactjs.org">ReactJS</a>
     <br />
     <br />
-    <b><a href="https://blueprints-ui.com/home">View Website</a></b>
+    <b><a href="http://blueprints-ui.com">View Website</a></b>
   </p>
 </p>
 <div align="center">
 
-[![Npm][npm-shield]][npm-url] [![Heroku][heroku-shield]][heroku-url]
+[![Npm][npm-shield]][npm-url] [![Pages][pages-shield]][pages-url]
+
 [![LinkedIn][linkedin-shield]][linkedin-url] [![Gmail][gmail-shield]][gmail-url] [![GitHub][github-shield]][github-url] 
 </div>
 
@@ -26,20 +27,22 @@
 
 ## About The Project
 
-**BluePrints-UI** is a ReactJS component library & UI design system.
+**blueprints-ui** is a ReactJS component library & UI design system.
 
 This library provides a ton of unique, customizable components that are flexible enough to solve any challenge
 
 ---
 
-### Media:
-
-![Screenshot of https://BluePrints-UI.com/home](https://user-images.githubusercontent.com/44077214/74891380-201eea80-5344-11ea-9e40-35b88676701f.png)
-
 ### Built With:
 - [ReactJS](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [JSS](https://cssinjs.org/react-jss/?v=v10.0.4)
+
+
+#### Notable Mentions:
+- [Create React Library](https://www.npmjs.com/package/create-react-library)
+- [Gravit Designer](https://gravit.io)
+
 ---
 
 **[BACK TO TOP](#top)**
@@ -54,8 +57,8 @@ This library provides a ton of unique, customizable components that are flexible
 [github-shield]: https://img.shields.io/badge/dynamic/json?label=Follow&query=length&url=https://api.github.com/users/jakeadmire/followers&style=for-the-badge&logo=github
 [github-url]: https://github.com/JakeAdmire/
 
-[heroku-shield]: https://img.shields.io/badge/heroku-deployed-lightblue?style=for-the-badge&logo=heroku
-[heroku-url]: https://blueprints-ui.com/home
-
 [npm-shield]: https://img.shields.io/npm/v/blueprints-ui?style=for-the-badge
 [npm-url]: https://www.npmjs.com/package/blueprints-ui
+
+[pages-shield]: https://img.shields.io/badge/github-deployed-24292e?style=for-the-badge&logo=github
+[pages-url]: https://blueprints-ui.com/
