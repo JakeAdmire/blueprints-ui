@@ -1,7 +1,7 @@
 {
   "name": "blueprints-ui",
-  "version": "1.0.0",
-  "description": "...",
+  "version": "1.0.1",
+  "description": "A cleaner, better design system for ReactJS",
   "author": "JakeAdmire",
   "license": "MIT",
   "repository": "JakeAdmire/blueprints-ui",
