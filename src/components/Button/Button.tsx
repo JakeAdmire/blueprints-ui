@@ -13,23 +13,24 @@ import { ToggleableNeumorphismButton } from './varients/ToggleableNeumorphismBut
 
 export type ButtonProps = {
     url?: string,
-    text?: string,
     overrideStyles?: React.CSSProperties,
     textColor?: string,
     onClick?: (event: MouseEvent<HTMLButtonElement | HTMLLabelElement>) => void
 } & Partial<DefaultProps>;
 
 type DefaultProps = {
-    variant: "default" | "neumorphism",
+    backgroundColor: string,
+    disabled: boolean,
+    text: "default",
     toggleable: boolean,
-    backgroundColor: string
+    variant: "default" | "neumorphism",
 }
 
 type ButtonState = {
     child: string,
-    textColor: string,
+    highlight: string,
     lowlight: string,
-    highlight: string
+    textColor: string,
 }
 
 export class Button extends Component<ButtonProps, ButtonState> {
@@ -43,9 +44,11 @@ export class Button extends Component<ButtonProps, ButtonState> {
         }
     }
     static defaultProps: DefaultProps = {
+        backgroundColor: "#7d7d7d",
+        disabled: false,
+        text: "default",
+        toggleable: false,
         variant: "default",
-        backgroundColor: "#0299E3",
-        toggleable: false
     }
 
     componentDidMount() {
@@ -76,8 +79,8 @@ export class Button extends Component<ButtonProps, ButtonState> {
         const backgroundColor = Color(this.props.backgroundColor);
 
         this.setState({
-            lowlight: backgroundColor.darken(.4).alpha(.15).string(),
-            highlight: backgroundColor.lighten(.4).alpha(.15).string()
+            lowlight: backgroundColor.darken(.4).alpha(.3).string(),
+            highlight: backgroundColor.lighten(.4).alpha(.3).string()
         })
     }
 

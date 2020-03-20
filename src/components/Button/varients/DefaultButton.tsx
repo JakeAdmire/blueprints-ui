@@ -12,7 +12,7 @@ type UniqueProps = {
 const useStyles = createUseStyles({
     defaultButton: {
         backgroundColor: (props: UniqueProps) => props.backgroundColor,
-        boxShadow: '0 2px 5px #00000026',    
+        boxShadow: (props: UniqueProps) => props.disabled ? 'none' : '0 2px 5px #00000026',    
         transition: 'box-shadow .2s, transform .2s',
 
         '&:hover': {
@@ -34,7 +34,7 @@ const useStyles = createUseStyles({
         },
 
         '& , &::after': {
-            borderRadius: '50px',
+            borderRadius: '10px',
             border: 'none'
         },
 
@@ -48,6 +48,13 @@ const useStyles = createUseStyles({
     },
     buttonText: {
         color: (props: UniqueProps) => props.textColor || props.determineTextColor(props.backgroundColor)
+    },
+    disabled: {
+        pointerEvents: 'none',
+
+        '&::after': {
+            background: '#FFFFFF40'
+        }
     }
 })
 
@@ -55,7 +62,7 @@ export const DefaultButton: FunctionComponent<UniqueProps> = (props) => {
     const classes = useStyles(props);
 
     return (
-        <button className={styles.generalButton + ' ' + classes.defaultButton}
+        <button className={styles.generalButton + ' ' + classes.defaultButton + (props.disabled ? ' ' + classes.disabled : '')}
                 onClick={props.onClick}>
             <p className={classes.buttonText}>{props.text}</p>
         </button>
