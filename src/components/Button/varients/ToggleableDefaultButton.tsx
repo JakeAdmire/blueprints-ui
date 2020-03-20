@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { createUseStyles } from 'react-jss';
+import uuidv4 from 'uuid/v4';
 // 
 import { ButtonProps } from '../Button';
 import styles from '../styles.css';
@@ -12,7 +13,7 @@ type UniqueProps = {
 const useStyles = createUseStyles({
     toggleableDefaultButton: {
         backgroundColor: (props: UniqueProps) => props.backgroundColor,
-        boxShadow: '0 2px 5px #00000026, inset 0 0 0 #00000026',    
+        boxShadow: (props: UniqueProps) => props.disabled ? 'none' : '0 2px 5px #00000026, inset 0 0 0 #00000026',    
         transition: 'box-shadow .2s, transform .2s, backgroundColor .3s',
 
         '&:hover': {
@@ -35,7 +36,7 @@ const useStyles = createUseStyles({
         },
 
         '& , &::after': {
-            borderRadius: '50px',
+            borderRadius: '10px',
             border: 'none'
         },
 
@@ -79,19 +80,27 @@ const useStyles = createUseStyles({
     },
     buttonText: {
         color: (props: UniqueProps) => props.textColor || props.determineTextColor(props.backgroundColor)
+    },
+    disabled: {
+        pointerEvents: 'none',
+
+        '&::after': {
+            background: '#FFFFFF40'
+        }
     }
 })
 
 export const ToggleableDefaultButton: FunctionComponent<UniqueProps> = (props) => {
     const classes = useStyles(props);
+    const uniqueID = uuidv4();
 
     return (
         <div>
             <input  className={classes.hiddenCheckbox} 
                     type="checkbox" 
-                    id="toggleableDefaultButtonCheckbox" />
-            <label  className={styles.generalButton + ' ' + classes.toggleableDefaultButton}
-                    htmlFor="toggleableDefaultButtonCheckbox"
+                    id={uniqueID} />
+            <label  className={styles.generalButton + ' ' + classes.toggleableDefaultButton  + (props.disabled ? ' ' + classes.disabled : '')}
+                    htmlFor={uniqueID}
                     onClick={props.onClick}>
                 <p className={classes.buttonText}>{props.text}</p>
             </label>
