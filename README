@@ -1,1 +1,38 @@
-## Test README for npm
+# <img src="http://blueprints-ui.com/img/logo.svg" width="25"/> blueprints-ui
+[![Npm][npm-shield]][npm-url] [![Pages][pages-shield]][pages-url] [![Docusaurus][docusaurus-shield]][docusaurus-url] [![GitHub license](https://img.shields.io/github/license/JakeAdmire/BluePrints-UI)](https://github.com/JakeAdmire/BluePrints-UI/blob/master/LICENSE) [![GitHub][github-shield]][github-url] 
+
+> A cleaner, better design system for [ReactJS](https://reactjs.org/)
+
+### 🏠 [Homepage](http://blueprints-ui.com)
+
+## Install
+*npm:*
+```npm install blueprints-ui```
+
+*yarn:*
+```yarn add blueprints-ui```
+
+## Usage
+Check out the [blueprints-ui docs](http://blueprints-ui.com/docs/usage) for the best experience.
+
+## Author
+👤 **Jake Admire** - UI Developer
+- GitHub: [@JakeAdmire](https://github.com/jakeadmire)
+- LinkedIn: [@JakeAdmire](https://www.linkedin.com/in/jakeadmire/)
+
+## 📝 License
+Copyright © 2020 [Jake Admire](https://github.com/jakeadmire).
+This project is [MIT](https://github.com/JakeAdmire/BluePrints-UI/blob/master/LICENSE) licensed.
+
+
+
+[npm-shield]: https://img.shields.io/npm/v/blueprints-ui
+[npm-url]: https://www.npmjs.com/package/blueprints-ui
+
+[pages-shield]: https://img.shields.io/badge/github-deployed-24292e&logo=github
+[pages-url]: http://blueprints-ui.com/
+
+[docusaurus-shield]: https://img.shields.io/badge/docs-updated-3dcc5f&logo=docusaurus
+[docusaurus-url]: http://blueprints-ui.com/docs/installation
+[github-shield]: https://img.shields.io/badge/dynamic/json?label=Follow&query=length&url=https://api.github.com/users/jakeadmire/followers&logo=github&style=social
+[github-url]: https://github.com/JakeAdmire/

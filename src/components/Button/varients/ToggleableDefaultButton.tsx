@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { createUseStyles } from 'react-jss';
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 // 
 import { ButtonProps } from '../Button';
 import styles from '../styles.css';
@@ -12,7 +12,7 @@ type UniqueProps = {
 
 const useStyles = createUseStyles({
     toggleableDefaultButton: {
-        backgroundColor: (props: UniqueProps) => props.backgroundColor,
+        background: (props: UniqueProps) => props.backgroundColor,
         boxShadow: (props: UniqueProps) => props.disabled ? 'none' : '0 2px 5px #00000026, inset 0 0 0 #00000026',    
         transition: 'box-shadow .2s, transform .2s, backgroundColor .3s',
 
@@ -23,8 +23,8 @@ const useStyles = createUseStyles({
         },
 
         '&:active': {
-            boxShadow: '0 0 0 #00000026, inset 0 3px 2px #00000026',
-            transform: 'perspective(1px) scale(.99)',
+            boxShadow: '0 0 0 #00000026, inset 0 6px 2px #00000026',
+            transform: 'perspective(1px) scale(.95)',
         },
 
         '&:hover::after': {
@@ -57,7 +57,7 @@ const useStyles = createUseStyles({
         display: 'none',
 
         '&:checked ~ label': {
-            boxShadow: '0 0 0 #00000026, inset 0 1px 2px #00000026',
+            boxShadow: '0 0 0 #00000026, inset 0 4px 2px #00000026',
             transform: 'perspective(1px) scale(.99)',
 
             '&:hover': {
@@ -65,7 +65,8 @@ const useStyles = createUseStyles({
             },
 
             '&:active': {
-                boxShadow: 'inset 0 3px 2px #00000026'
+                boxShadow: 'inset 0 6px 2px #00000026',
+                transform: 'perspective(1px) scale(.95)'
             },
 
             '&::after': {
@@ -85,7 +86,7 @@ const useStyles = createUseStyles({
         pointerEvents: 'none',
 
         '&::after': {
-            background: '#FFFFFF40'
+            background: '#d3d3d3bf'
         }
     }
 })

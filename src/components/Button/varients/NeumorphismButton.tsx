@@ -12,7 +12,7 @@ type UniqueProps = {
 
 const useStyles = createUseStyles({
     neumorphismButton: {
-        backgroundColor: (props: UniqueProps) => props.backgroundColor,
+        background: (props: UniqueProps) => props.backgroundColor,
         boxShadow: (props: UniqueProps) => props.disabled ? 'none' : `
             7px 7px 9px ${props.lowlight}, 
             -7px -7px 9px ${props.highlight}
@@ -48,7 +48,7 @@ const useStyles = createUseStyles({
             top: 0, bottom: 0,
             right: 0, left: 0,
             borderRadius: '10px',
-            background: '#FFFFFF40'
+            background: '#d3d3d3bf'
         }
     }
 })

@@ -11,7 +11,7 @@ type UniqueProps = {
 
 const useStyles = createUseStyles({
     defaultButton: {
-        backgroundColor: (props: UniqueProps) => props.backgroundColor,
+        background: (props: UniqueProps) => props.backgroundColor,
         boxShadow: (props: UniqueProps) => props.disabled ? 'none' : '0 2px 5px #00000026',    
         transition: 'box-shadow .2s, transform .2s',
 
@@ -53,7 +53,7 @@ const useStyles = createUseStyles({
         pointerEvents: 'none',
 
         '&::after': {
-            background: '#FFFFFF40'
+            background: '#d3d3d3bf'
         }
     }
 })

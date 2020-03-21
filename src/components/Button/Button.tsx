@@ -52,8 +52,21 @@ export class Button extends Component<ButtonProps, ButtonState> {
     }
 
     componentDidMount() {
+        this.checkForErrors();
         const newChild = this.determineChild();
         this.buildAdditionalProps(newChild);
+    }
+
+    checkForErrors() {
+        const { variant, backgroundColor } = this.props;
+
+        let errorMessage: string = "";
+
+        if (variant.toLowerCase().includes('neumorphism') && backgroundColor.includes('gradient'))
+            errorMessage = "Neumorphic Button component cannot accept backgroundColor with a value of 'gradient'";
+        
+        if (errorMessage.length)
+            throw new Error(errorMessage);
     }
 
     determineChild(): string {
@@ -66,9 +79,14 @@ export class Button extends Component<ButtonProps, ButtonState> {
     }
 
     determineTextColor(backgroundColor: string): string {
-        return Color(backgroundColor).isDark()
+        if (backgroundColor.includes('gradient')) {
+            return '#FFF';
+
+        } else {
+            return Color(backgroundColor).isDark()
             ? '#FFF'
             : '#000';
+        }
     }
 
     buildAdditionalProps(newChild: string): void {
