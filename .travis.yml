@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 8
+- 12
 cache:
   directories:
   - node_modules
@@ -9,7 +9,7 @@ addons:
 jobs:
   include:
   - stage: Install
-    script: npm i
+    script: npm ci
   - stage: Test & Coverage
     script: npm test -- -u --collectCoverage=true && npm run coveralls
 deploy:
