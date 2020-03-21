@@ -1,4 +1,21 @@
 language: node_js
 node_js:
-  - 9
-  - 8
+- 8
+cache:
+  directories:
+  - node_modules
+addons:
+  artifacts: true
+jobs:
+  include:
+  - stage: Install
+    script: npm ci
+  - stage: Test & Coverage
+    script: npm test -- -u --collectCoverage=true && npm run coveralls
+deploy:
+  provider: npm
+  email: jakeadmire1@gmail.com
+  api_key:
+    secure: 0L7tG763AV0kH8Sa2x59DNaFu+H0HfwOLobVv9vyja9gzx9nDs9muXK0yF6syZp1ulB6UPTNbdBv/jw1aDRfBhbF32sP65WjuYPMK4clDPeiBv6o5ZKvymzkd4lfWjdnyvNQPr+Yri6nQKQvHbI9kcqCzYECqy+WPv5q8+ZVGHT+f3WeXnLWIN3WVdC8O3DiaMK1PXXjBcBTsybtNZ+CujVwuHVMLm1uutOvTljMBQf8H4YOyXiQc5Y49MRGimAqJP6oNjtP6uwjeubBm7mD8AWb+eRx+UD8WiT26zpbkLwpYerxKGE9eJZSr8ZyPJe+IROtDVxHkZG1CBoA+hdkjYHKbvJkW9qXrKix3EzfuyQYckx9oJ9G5FWpIxll7mBv51Q9n3NSwFeN3WzOwnbLVWwHCUWK+2fNlvUnF+NxsorJgwPrM5u9h1l8G7BrLhg8gRGqEAffJ0E+5XcbtKbKiNV3R6N5l6Eg9Jxl7VguXPjQQ98algJA+iK19zJ/PNqutUKTxXOkb5V21Pn50I6ESilU04S55QM6ZqhujNNKRNdkwGtzg/cBQuJXDOeipq6tAnHdLqqrblg3aHFvbDJSbBVYg6Yl4E/c1s8yQiDEiOCeyZnI37INRiteFYtx5yPn8UnhJteImTDVsXNBMqJJdSIBneIG5xwV6f5E/b1Cojs=
+  on:
+    repo: JakeAdmire/BluePrints-UI
