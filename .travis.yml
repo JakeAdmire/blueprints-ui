@@ -9,7 +9,7 @@ addons:
 jobs:
   include:
   - stage: Install
-    script: npm ci
+    script: npm i
   - stage: Test & Coverage
     script: npm test -- -u --collectCoverage=true && npm run coveralls
 deploy:
