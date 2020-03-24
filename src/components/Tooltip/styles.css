@@ -1,0 +1,23 @@
+.tooltipWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    /*  */
+    background: dimgrey;
+    padding: 3px 5px;
+    border-radius: 5px;
+    user-select: none;
+    pointer-events: none;
+    /*  */
+    font-size: 12px;
+    width: fit-content;
+    color: white;
+}
+
+.tooltip::before {
+    content: '';
+    position: absolute;
+}
