@@ -131,45 +131,49 @@ export type TooltipBaseProps = {
 
 const useStyles = createUseStyles({
     tooltip: {
+        boxSizing: 'border-box',
+        width: 'max-content',
+        maxWidth: '300px',
+        textAlign: 'center',
         transform: 'scale(0)',
         transformOrigin: (props: any) => props.pointPosition.toLowerCase(),
         transition: 'transform .2s',
 
-        '&.bui_tooltip-verticalStart': { top: 0 },
-        '&.bui_tooltip-verticalEnd': { bottom: 0 },
-        '&.bui_tooltip-horizontalStart': { left: 0 },
-        '&.bui_tooltip-horizontalEnd': { right: 0 },
-        '&.bui_tooltip-verticalCenter': {
-            top: '50%',
-            marginTop: (props: any) => `calc(${
-                    props.tooltipRef.current 
-                        ? props.tooltipRef.current.offsetHeight 
-                        : 0
-            } / 2 * -1px)`
-        },
-        '&.bui_tooltip-horizontalCenter': {
-            left: '50%',
-            marginLeft: (props: any) => `calc(${
-                    props.tooltipRef.current 
-                    ? props.tooltipRef.current.offsetWidth 
-                    : 0
-            } / 2 * -1px)`
-        },   
         '&::before': {
             content: (props: any) => props.pointed ? '""' : 'none'
         } 
     },
-    top: {
-        bottom: (props: any) => `calc(100% + ${props.spacing}px)`
+    verticalStart: { top: 0 },
+    verticalEnd: { bottom: 0 },
+    horizontalStart: { left: 0 },
+    horizontalEnd: { right: 0 },
+    verticalCenter: (props: any) => {
+        const { current }   = props.tooltipRef,
+              parentHeight  = current ? current.parentElement.offsetParent.offsetHeight : 0,
+              tooltipHeight = current ? current.offsetHeight : 0;
+
+        return {
+            top: `calc((${tooltipHeight} / 2 * -1px) - (${parentHeight} / 2 * -1px))`,
+        }
     },
-    right: {
-        left: (props: any) => `calc(100% + ${props.spacing}px)`
+    horizontalCenter: (props: any) => {
+        const { current }   = props.tooltipRef,
+              tooltipWidth  = current ? current.parentElement.offsetParent.offsetWidth : 0,
+              parentWidth   = current ? current.offsetWidth : 0;
+
+        return {
+            left: `calc((${parentWidth} / 2 * -1px) - (${tooltipWidth} / 2 * -1px))`
+        }
     },
-    bottom: {
-        top: (props: any) => `calc(100% + ${props.spacing}px)`
-    },
-    left: {
-        right: (props: any) => `calc(100% + ${props.spacing}px)`
+    tooltipPosition: (props: any) => {
+        const { spacing } = props;
+
+        return {
+            '&.bui_tooltip-top': { bottom: `calc(100% + ${spacing}px)`},
+            '&.bui_tooltip-bottom': { top: `calc(100% + ${spacing}px)`},
+            '&.bui_tooltip-left': { right: `calc(100% + ${spacing}px)`},
+            '&.bui_tooltip-right': { left: `calc(100% + ${spacing}px)`}
+        }
     },
     pointTop: {
         '&::before': {
@@ -222,14 +226,14 @@ export const TooltipBase: FunctionComponent<TooltipBaseProps> = (props) => {
 
     return (
         <span>
-            <span ref={tooltipRef} id="test" className={`
+            <span ref={tooltipRef} className={`
                 ${styles.tooltip}
                 ${classes.tooltip}
-                ${classes[props.positionClasses[0]]}
-                ${'bui_tooltip-' + props.positionClasses[1]}
+                ${classes.tooltipPosition} ${'bui_tooltip-' + props.positionClasses[0]}
+                ${classes[props.positionClasses[1]]}
                 ${classes['point' + props.pointPosition]}
                 ${props.wrapperHovered ? classes.wrapperHovered : ''}
-                `}>{props.text}</span>
+            `}>{props.text}</span>
             { props.children }
         </span>
     )
