@@ -76,6 +76,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,ts,tsx}",
       "!src/index.tsx",
+      "!src/setupTests.js",
       "!src/typings.d.ts"
     ]
   }
