@@ -56,7 +56,7 @@ describe('Button', () => {
         expect(wrapperState['highlight']).toEqual(defaultState.highlight);
     })
 
-    describe('On Mount...', () => {
+    describe.skip('On Mount...', () => {
 
         it('should invoke checkForErrors', () => {
     
@@ -96,7 +96,7 @@ describe('Button', () => {
 
     })
 
-    describe('On Render...', () => {
+    describe.skip('On Render...', () => {
 
         it('should render DefaultButton by default', () => {
 
