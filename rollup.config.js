@@ -37,6 +37,12 @@ export default {
       rollupCommonJSResolveHack: true,
       clean: true
     }),
-    commonjs()
+    commonjs({
+      include: 'node_modules/**',
+      namedExports: {
+        'node_modules/uuid/index.js':['v4'],
+        'node_modules/color/index.js':['Color']
+      },
+    })
   ]
 }
