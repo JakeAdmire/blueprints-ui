@@ -2,15 +2,14 @@
     position: fixed;
     top: 0; bottom: 0;
     left: 0; right: 0;
-    background: black;
-    /*  */
-    transition: opacity .5s;
-    opacity: 0;
     pointer-events: none;
+    /*  */
+    transition: background .5s;
+    background: transparent;
 }
 
 .modalWrapperOpen {
-    opacity: .3;
+    background: #0000004d;
     pointer-events: initial;
 }
 
