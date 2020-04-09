@@ -47,8 +47,10 @@ const useStyles = createUseStyles({
             position: 'absolute',
             left: 0, right: 0,
             top: 0, bottom: 0,
-            opacity: 0,
-            transition: 'all .2s'
+            background: '#d3d3d3bf',
+
+            transition: 'opacity .2s',
+            opacity: 0
         }
     },
     buttonText: {
@@ -58,7 +60,7 @@ const useStyles = createUseStyles({
         pointerEvents: 'none',
 
         '&::after': {
-            background: '#d3d3d3bf'
+            opacity: 1
         }
     }
 })
