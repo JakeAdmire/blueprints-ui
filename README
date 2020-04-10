@@ -13,7 +13,7 @@
 ```yarn add blueprints-ui```
 
 ## Usage
-Check out the [blueprints-ui docs](http://blueprints-ui.com/docs/usage) for the best experience.
+Check out the [blueprints-ui docs](https://blueprints-ui.com/docs/getting-started/usage) for the best experience.
 
 ## Author
 👤 **Jake Admire** - UI Developer
@@ -33,6 +33,6 @@ This project is [MIT](https://github.com/JakeAdmire/BluePrints-UI/blob/master/LI
 [pages-url]: http://blueprints-ui.com/
 
 [docusaurus-shield]: https://img.shields.io/badge/docs-updated-3dcc5f&logo=docusaurus
-[docusaurus-url]: http://blueprints-ui.com/docs/installation
+[docusaurus-url]: http://blueprints-ui.com/docs/getting-started/installation
 [github-shield]: https://img.shields.io/badge/dynamic/json?label=Follow&query=length&url=https://api.github.com/users/jakeadmire/followers&logo=github&style=social
 [github-url]: https://github.com/JakeAdmire/
