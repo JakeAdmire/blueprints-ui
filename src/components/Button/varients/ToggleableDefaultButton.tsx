@@ -28,11 +28,15 @@ const useStyles = createUseStyles({
         },
 
         '&:hover::after': {
-            // backgroundColor: '#FFFFFF6B'
+            backgroundColor: '#FFF',
+            opacity: 0.2,
+            transition: 'all .2s'
         },
 
         '&:active::after': {
-            backgroundColor: '#00000030'
+            backgroundColor: '#000',
+            opacity: 0.2,
+            transition: 'all .2s'
         },
 
         '& , &::after': {
@@ -45,7 +49,9 @@ const useStyles = createUseStyles({
             position: 'absolute',
             left: 0, right: 0,
             top: 0, bottom: 0,
-            transition: 'background-color .2s'
+            opacity: 0,
+            backgroundColor: 'transparent',
+            transition: 'all .2s'
         },
 
         '& p': {

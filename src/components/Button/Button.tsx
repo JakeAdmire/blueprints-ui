@@ -83,9 +83,9 @@ export class Button extends Component<ButtonProps, ButtonState> {
             return '#FFF';
 
         } else {
-            return Color(backgroundColor).isDark()
-            ? '#FFF'
-            : '#000';
+            return Color(backgroundColor).luminosity() <= 0.5
+                ? '#FFF'
+                : '#000';
         }
     }
 

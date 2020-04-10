@@ -14,7 +14,7 @@
 </p>
 <div align="center">
 
-[![Npm][npm-shield]][npm-url] [![Pages][pages-shield]][pages-url]
+[![Npm][npm-shield]][npm-url] [![Pages][pages-shield]][pages-url] [![Coverage Status](https://coveralls.io/repos/github/JakeAdmire/BluePrints-UI/badge.svg?branch=master)](https://coveralls.io/github/JakeAdmire/BluePrints-UI?branch=master)
 
 [![LinkedIn][linkedin-shield]][linkedin-url] [![Gmail][gmail-shield]][gmail-url] [![GitHub][github-shield]][github-url] 
 </div>
@@ -48,17 +48,17 @@ This library provides a ton of unique, customizable components that are flexible
 **[BACK TO TOP](#top)**
 
 <!-- URL References  -->
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-0077b5.svg?style=for-the-badge&logo=linkedin
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-0077b5.svg?logo=linkedin
 [linkedin-url]: https://linkedin.com/in/jakeadmire
 
-[gmail-shield]: https://img.shields.io/badge/-Email-red.svg?style=for-the-badge&logo=gmail&logoColor=white
+[gmail-shield]: https://img.shields.io/badge/-Email-red.svg?logo=gmail&logoColor=white
 [gmail-url]: mailto:jakeadmire1@gmail.com
 
-[github-shield]: https://img.shields.io/badge/dynamic/json?label=Follow&query=length&url=https://api.github.com/users/jakeadmire/followers&style=for-the-badge&logo=github
+[github-shield]: https://img.shields.io/badge/dynamic/json?label=Follow&query=length&url=https://api.github.com/users/jakeadmire/followers&logo=github
 [github-url]: https://github.com/JakeAdmire/
 
-[npm-shield]: https://img.shields.io/npm/v/blueprints-ui?style=for-the-badge
+[npm-shield]: https://img.shields.io/npm/v/blueprints-ui
 [npm-url]: https://www.npmjs.com/package/blueprints-ui
 
-[pages-shield]: https://img.shields.io/badge/github-deployed-24292e?style=for-the-badge&logo=github
+[pages-shield]: https://img.shields.io/badge/github-deployed-24292e?logo=github
 [pages-url]: https://blueprints-ui.com/
