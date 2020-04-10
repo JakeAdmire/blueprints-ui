@@ -16,7 +16,6 @@ type DefaultProps = {
 type TooltipState = {
     isChildDisabled: boolean,
     tooltipConfig: {
-        spacing: 10 | 6,
         positionClasses: string[],
         pointPosition: "Top" | "Right" | "Bottom" | "Left"
     },
@@ -31,7 +30,6 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
         this.state = {
             isChildDisabled: false,
             tooltipConfig: {
-                spacing: 10,
                 positionClasses: ["bottom", "horizontalCenter"],
                 pointPosition: "Top"
             },
@@ -85,7 +83,6 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
         
         this.setState({
             tooltipConfig: {
-                spacing: pointed ? 10 : 6,
                 positionClasses: positionClasses[position],
                 pointPosition: pointPosition[position.split('-')[0]]
             }
@@ -123,7 +120,6 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
 export type TooltipBaseProps = {
     text: string | HTMLElement,
     wrapperHovered: boolean,
-    spacing: number,
     pointed: boolean,
     pointPosition: "Top" | "Right" | "Bottom" | "Left",
     positionClasses: string[]
@@ -166,13 +162,11 @@ const useStyles = createUseStyles({
         }
     },
     tooltipPosition: (props: any) => {
-        const { spacing } = props;
-
         return {
-            '&.bui_tooltip-top': { bottom: `calc(100% + ${spacing}px)`},
-            '&.bui_tooltip-bottom': { top: `calc(100% + ${spacing}px)`},
-            '&.bui_tooltip-left': { right: `calc(100% + ${spacing}px)`},
-            '&.bui_tooltip-right': { left: `calc(100% + ${spacing}px)`}
+            '&.bui_tooltip-top': { bottom: `calc(100% + 6px)`},
+            '&.bui_tooltip-bottom': { top: `calc(100% + 6px)`},
+            '&.bui_tooltip-left': { right: `calc(100% + 6px)`},
+            '&.bui_tooltip-right': { left: `calc(100% + 6px)`}
         }
     },
     pointTop: {
@@ -240,7 +234,6 @@ export const TooltipBase: FunctionComponent<TooltipBaseProps> = (props) => {
 }
 
 TooltipBase.defaultProps = {
-    spacing: 10,
     pointed: true,
     pointPosition: "Top",
     positionClasses: ["bottom", "horizontalCenter"],
