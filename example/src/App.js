@@ -1,18 +1,31 @@
 import React, { Component } from 'react'
+import { Modal, Button } from 'blueprints-ui'
 
-import { Button } from 'blueprints-ui'
+import { CustomModal } from './CustomModal';
 
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      modalOpen: false
+    };
+  }
 
-  handleClick(e) {
-    console.log(e.target);
+  closeModal = () => {
+    this.setState({ modalOpen: false });
   }
 
   render () {
     return (
-      <Button text='Click Me!' 
-              toggleable
-              onClick={this.handleClick} />
+      <div>
+        <Button text="open modal" 
+                backgroundColor="#83e529"
+                textColor="white"
+                onClick={() => this.setState({modalOpen: true})} />
+
+        <CustomModal  modalStatus={this.state.modalOpen}
+                      closeMethod={this.closeModal} />
+      </div>
     )
   }
 }
