@@ -55,7 +55,7 @@
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.2",
     "enzyme-to-json": "^3.4.4",
-    "gh-pages": "^1.2.0",
+    "gh-pages": "^5.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts-ts": "^2.8.0",
